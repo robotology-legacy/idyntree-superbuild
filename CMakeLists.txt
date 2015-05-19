@@ -51,7 +51,7 @@ if(MSVC)
 	if(NOT ${Boost_FOUND})
 		# install Boost from superbuild only on Windows 
 		# This Boost dependencies are required by urdfdom
-		find_or_build_package(Boost COMPONENTS smart_ptr algorithm lexical_cast function)
+		find_or_build_package(Boost COMPONENTS smart_ptr algorithm lexical_cast function filesystem)
 	endif()
 
 	find_or_build_package(Eigen3)
