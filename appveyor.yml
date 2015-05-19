@@ -1,0 +1,52 @@
+version: 1.0.{build}
+os: unstable
+
+branches:
+  except:
+  - travis
+
+clone_folder: c:\dev\iDynTree-superbuild
+
+environment:
+  GSL_DIR:           c:/Program Files (x86)/robotology/gsl-1.14
+  IPOPT_DIR:         c:/Program Files (x86)/robotology/ipopt-3.10.1
+  GTK_BASEPATH:      c:/Program Files (x86)/robotology/gtkmm-2.22.0-2
+  GTKMM_BASEPATH:    c:/Program Files (x86)/robotology/gtkmm-2.22.0-2
+  OpenCV_DIR:        c:/Program Files (x86)/robotology/opencv-git-snapshot-26-09-12
+  YARP_DIR:          c:/Program Files (x86)/robotology/yarp-2.3.63
+  ICUB_DIR:          c:/Program Files (x86)/robotology/icub-1.1.15
+  BOOST_ROOT:        C:\Libraries\boost
+  BOOST_LIBRARYDIR:  C:\Libraries\boost\lib32-msvc-11.0
+  
+
+install:
+  # to install downloader do: "cinst wget -x86"
+  # the format is: "wget -q URL -O c:\path-to-file\file_name"
+  # special format is: "wget -q --no-check-certificate URL -O c:\path-to-file\file_name"
+  # that accounts for downloading from e.g. https://googledrive.com/host/$HASH
+  # -
+  # to install unzipper do: "cinst 7zip.commandline -x86"
+  # the format is: "7z x c:\path-to-archive\archive.zip -oc:\path-where-unzip -y > nul" 
+  - cmd: cinst wget -x86
+  
+
+  - cmd: wget -q http://sourceforge.net/projects/yarp0/files/yarp2/yarp-2.3.63/windows/yarp_2.3.63_v11_x86_0.exe             -O c:\dev\yarp.exe
+  - cmd: wget -q http://sourceforge.net/projects/robotcub/files/iCub-main/iCub-main-1.1.15/windows/iCub_1.1.15_v11_x86_0.exe -O c:\dev\icub.exe
+  
+  - cmd: c:\dev\yarp.exe /S
+  - cmd: c:\dev\icub.exe /S
+  - cmd: dir "c:\Program Files (x86)\robotology"
+
+build:
+
+build_script:
+  - cd c:\dev\iDynTree-superbuild
+  - md build
+  - cd build
+  - cmake -G"Visual Studio 11" -DNON_INTERACTIVE_BUILD:BOOL=TRUE ..
+  - msbuild /m /p:Configuration=Release /p:Platform="Win32" iDynTree-superbuild.sln
+
+notifications:
+  email:
+  - silvio.traversaro@iit.it
+  
