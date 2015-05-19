@@ -16,7 +16,7 @@ environment:
   YARP_DIR:          c:/Program Files (x86)/robotology/yarp-2.3.63
   ICUB_DIR:          c:/Program Files (x86)/robotology/icub-1.1.15
   BOOST_ROOT:        C:\Libraries\boost
-  BOOST_LIBRARYDIR:  C:\Libraries\boost\lib32-msvc-11.0
+  BOOST_LIBRARYDIR:  C:\Libraries\boost\lib32-msvc-10.0
   
 
 install:
@@ -27,11 +27,11 @@ install:
   # -
   # to install unzipper do: "cinst 7zip.commandline -x86"
   # the format is: "7z x c:\path-to-archive\archive.zip -oc:\path-where-unzip -y > nul" 
-  - cmd: cinst wget -x86
+  - cmd: cinst -y wget -x86
   
 
-  - cmd: wget -q http://sourceforge.net/projects/yarp0/files/yarp2/yarp-2.3.63/windows/yarp_2.3.63_v11_x86_0.exe             -O c:\dev\yarp.exe
-  - cmd: wget -q http://sourceforge.net/projects/robotcub/files/iCub-main/iCub-main-1.1.15/windows/iCub_1.1.15_v11_x86_0.exe -O c:\dev\icub.exe
+  - cmd: wget -q http://sourceforge.net/projects/yarp0/files/yarp2/yarp-2.3.63/windows/yarp_2.3.63_v10_x86_0.exe             -O c:\dev\yarp.exe
+  - cmd: wget -q http://sourceforge.net/projects/robotcub/files/iCub-main/iCub-main-1.1.15/windows/iCub_1.1.15_v10_x86_0.exe -O c:\dev\icub.exe
   
   - cmd: c:\dev\yarp.exe /S
   - cmd: c:\dev\icub.exe /S
@@ -43,7 +43,7 @@ build_script:
   - cd c:\dev\iDynTree-superbuild
   - md build
   - cd build
-  - cmake -G"Visual Studio 11" -DNON_INTERACTIVE_BUILD:BOOL=TRUE ..
+  - cmake -G"Visual Studio 10" -DNON_INTERACTIVE_BUILD:BOOL=TRUE ..
   - msbuild /m /p:Configuration=Release /p:Platform="Win32" iDynTree-superbuild.sln
 
 notifications:
