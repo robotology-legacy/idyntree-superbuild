@@ -47,15 +47,7 @@ include(YCMEPHelper)
 # find it in the system we call find_or_build_package
 # with the required components.
 if(MSVC) 
-	find_package(Boost)
-	if(NOT ${Boost_FOUND})
-		# install Boost from superbuild only on Windows 
-		# This Boost dependencies are required by urdfdom
-		find_or_build_package(Boost COMPONENTS smart_ptr algorithm lexical_cast function filesystem)
-	endif()
-
 	find_or_build_package(Eigen3)
-	
 else()
     find_package(Eigen3 3.2 REQUIRED)
 endif()
