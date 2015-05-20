@@ -12,8 +12,23 @@ find_or_build_package(ICUB QUIET)
 # Therefore we disable the package registry using
 # NO_CMAKE_PACKAGE_REGISTRY
 find_or_build_package(orocos_kdl QUIET NO_CMAKE_PACKAGE_REGISTRY)
+if( NOT MSVC )
 find_or_build_package(urdfdom_headers QUIET)
 find_or_build_package(urdfdom QUIET)
+endif()
+
+if( MSVC )
+ycm_ep_helper(iDynTree TYPE GIT
+              STYLE GITHUB
+              REPOSITORY robotology-playground/iDynTree.git
+              TAG master
+              COMPONENT libraries
+              CMAKE_CACHE_ARGS -DIDYNTREE_ENABLE_URDF:BOOL=ON
+              CMAKE_ARGS -DIDYNTREE_USES_MATLAB:BOOL=${IDYNTREE_USES_MATLAB}
+              DEPENDS YARP
+                      ICUB
+                      orocos_kdl)
+else()
 
 ycm_ep_helper(iDynTree TYPE GIT
               STYLE GITHUB
@@ -27,3 +42,4 @@ ycm_ep_helper(iDynTree TYPE GIT
                       orocos_kdl
                       urdfdom_headers
                       urdfdom)
+endif()
