@@ -11,6 +11,7 @@ find_or_build_package(ICUB QUIET)
 # directory, and therefore will not rebuild the package.
 # Therefore we disable the package registry using
 # NO_CMAKE_PACKAGE_REGISTRY
+find_or_build_package(TinyXML QUIET)
 find_or_build_package(orocos_kdl QUIET NO_CMAKE_PACKAGE_REGISTRY)
 if( NOT MSVC )
 find_or_build_package(urdfdom_headers QUIET)
@@ -27,7 +28,8 @@ ycm_ep_helper(iDynTree TYPE GIT
               CMAKE_ARGS -DIDYNTREE_USES_MATLAB:BOOL=${IDYNTREE_USES_MATLAB}
               DEPENDS YARP
                       ICUB
-                      orocos_kdl)
+                      orocos_kdl
+					  TinyXML)
 else()
 
 ycm_ep_helper(iDynTree TYPE GIT
@@ -41,5 +43,6 @@ ycm_ep_helper(iDynTree TYPE GIT
                       ICUB
                       orocos_kdl
                       urdfdom_headers
-                      urdfdom)
+                      urdfdom
+					  TinyXML)
 endif()
