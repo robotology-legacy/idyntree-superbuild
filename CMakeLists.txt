@@ -52,7 +52,7 @@ else()
     find_package(Eigen3 3.2 REQUIRED)
 endif()
 
-find_or_build_package(YARP 2.3.63.2)
+find_or_build_package(YARP)
 find_or_build_package(ICUB)
 find_or_build_package(iDynTree)
 
