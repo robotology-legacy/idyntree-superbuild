@@ -51,7 +51,8 @@ You can install Eigen from source code available from the [Eigen official websit
 You can simply extract the Eigen source code in a directory, and then define the `EIGEN3_ROOT` environment variable to the path of the directory that contains the file `signature_of_eigen3_matrix_library` (it should be the first directory contained in the compressed file).
 
 ####YARP & iCub
-For installing the latest version of YARP and ICUB software, please refer to [the official iCub documentation](http://wiki.icub.org/wiki/ICub_Software_Installation).
+For installing the latest version of YARP and ICUB software, please refer to [the official iCub documentation](http://wiki.icub.org/wiki/ICub_Software_Installation). Please note that iDynTree
+depends on YARP 2.3.63.2 , so it does not support YARP and ICUB installed from binaries. 
 
 ###Superbuild
 If you didn't already configured your git, you have to set your name and email to sign your commits:
@@ -59,9 +60,9 @@ If you didn't already configured your git, you have to set your name and email t
 git config --global user.name FirstName LastName
 git config --global user.email user@email.domain 
 ```
-After that you can clone the superbuild repository as any other git repository, and generate the Visual Studio solution using the CMake gui. Then you open the generated solution with Visual Studio and build the target `all`. 
+After that you can clone the superbuild repository as any other git repository, and generate the Visual Studio solution using the CMake gui. Then you open the generated solution with Visual Studio and build the target `ALL_BUILD`. 
 Visual Studio will then download, build and install in a local directory all the CoDyCo software and its dependencies.
-If you prefer to work from the command line, you can also compile the `all` target using the following command (if you are in the `iDynTree-superbuild/build` directory:
+If you prefer to work from the command line, you can also compile the `ALL_BUILD` target using the following command (if you are in the `iDynTree-superbuild/build` directory:
 ~~~
 cmake --build . 
 ~~~
