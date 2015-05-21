@@ -8,6 +8,7 @@ branches:
 clone_folder: c:\dev\iDynTree-superbuild
 
 environment:
+  ACE_DIR:           c:/Program Files (x86)/robotology/ace-6.1.1
   GSL_DIR:           c:/Program Files (x86)/robotology/gsl-1.14
   IPOPT_DIR:         c:/Program Files (x86)/robotology/ipopt-3.10.1
   GTK_BASEPATH:      c:/Program Files (x86)/robotology/gtkmm-2.22.0-2
