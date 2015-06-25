@@ -1,4 +1,4 @@
-# iDynTree-superbuild
+# iDynTree-superbuild [![Build Status](https://travis-ci.org/robotology-playground/iDynTree-superbuild.svg?branch=master)](https://travis-ci.org/robotology-playground/iDynTree-superbuild)
 Superbuild helper repository for installing dependencies for all the components of the iDynTree library. 
 
 Installation
