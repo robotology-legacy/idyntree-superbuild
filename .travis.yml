@@ -15,14 +15,6 @@ matrix:
     - os: linux
       compiler: gcc
       env: TRAVIS_CMAKE_GENERATOR="Unix Makefiles", TRAVIS_BUILD_TYPE="Release", CODYCO_WITH_OLD_EIGEN=true
-    - os: osx
-      compiler: gcc
-      env: TRAVIS_CMAKE_GENERATOR="Unix Makefiles", TRAVIS_BUILD_TYPE="Debug", CODYCO_WITH_OLD_EIGEN=false
-    - os: osx
-      compiler: clang
-      env: TRAVIS_CMAKE_GENERATOR="Xcode", TRAVIS_BUILD_TYPE="Release", CODYCO_WITH_OLD_EIGEN=false
-  exclude:
-    - os: linux
 
 before_script:
   - sh .ci/travis-deps.sh
