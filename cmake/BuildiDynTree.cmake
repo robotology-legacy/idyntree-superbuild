@@ -21,7 +21,7 @@ endif()
 if( MSVC )
 ycm_ep_helper(iDynTree TYPE GIT
               STYLE GITHUB
-              REPOSITORY robotology-playground/iDynTree.git
+              REPOSITORY robotology/idyntree.git
               TAG master
               COMPONENT libraries
               CMAKE_CACHE_ARGS -DIDYNTREE_ENABLE_URDF:BOOL=ON
@@ -29,12 +29,12 @@ ycm_ep_helper(iDynTree TYPE GIT
               DEPENDS YARP
                       ICUB
                       orocos_kdl
-					  TinyXML)
+		      TinyXML)
 else()
 
 ycm_ep_helper(iDynTree TYPE GIT
               STYLE GITHUB
-              REPOSITORY robotology-playground/iDynTree.git
+              REPOSITORY robotology/idyntree.git
               TAG master
               COMPONENT libraries
               CMAKE_CACHE_ARGS -DIDYNTREE_ENABLE_URDF:BOOL=ON
@@ -44,5 +44,5 @@ ycm_ep_helper(iDynTree TYPE GIT
                       orocos_kdl
                       urdfdom_headers
                       urdfdom
-					  TinyXML)
+		      TinyXML)
 endif()
