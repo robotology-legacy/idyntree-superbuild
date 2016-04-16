@@ -17,8 +17,15 @@ include(FeatureSummary)
 
 set(YCM_USE_CMAKE_PROPOSED TRUE CACHE BOOL "Use files including unmerged cmake patches")
 
-#Compilation options
-option(USE_SYSTEM_TINYXML "Use system TinyXML instead of superbuild one" FALSE)
+# Add iDynTree options on the dependencies to use also to the iDynTree-superbuild
+option(IDYNTREE_SUPERBUILD_USES_KDL "Compile iDynTree superbuild with KDL dependency" TRUE)
+option(IDYNTREE_SUPERBUILD_USES_YARP "Compile iDynTree superbuild with YARP dependency" TRUE)
+option(IDYNTREE_SUPERBUILD_USES_ICUB_MAIN  "Compiled iDynTree superbuild with icub-main dependencies (for iKin and skinDynLib helper functions and tools)" TRUE)
+option(IDYNTREE_SUPERBUILD_USES_MATLAB "Compile iDynTree superbuild with Matlab dependency" FALSE)
+option(IDYNTREE_SUPERBUILD_USES_PYTHON "Compile iDynTree superbuild with Python dependency" FALSE)
+option(IDYNTREE_SUPERBUILD_USES_LUA "Compile iDynTree superbuild with Lua dependency" FALSE)
+
+
 
 # Optionally load a file named ProjectsTags
 # for overwriting the desired branch/tag/commit
@@ -38,25 +45,14 @@ include(YCMBootstrap)
 include(FindOrBuildPackage)
 include(YCMEPHelper)
 
-# Require Boost here to simplify debug for now
-# (BuildBoost.cmake requires CMake 3.0, but the 
-#  theory is that you need it only on Windows)
-# Note that while is possible to specify header-only
-# Boost libraries as components in BuildBoost.cmake,
-# this is not possible in FindBoost.cmake . For this 
-# reason we first search for Boost and only if we can't
-# find it in the system we call find_or_build_package
-# with the required components.
-if(MSVC) 
-	find_or_build_package(Eigen3)
+# Get Eigen from the superbuild only on Windows
+if(MSVC)
+    find_or_build_package(Eigen3)
 else()
     find_package(Eigen3 3.2 REQUIRED)
 endif()
 
-find_or_build_package(YARP)
-find_or_build_package(ICUB)
 find_or_build_package(iDynTree)
-
 
 set_package_properties(Git PROPERTIES TYPE RUNTIME)
 set_package_properties(Subversion PROPERTIES TYPE RUNTIME)
