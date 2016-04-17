@@ -26,7 +26,12 @@ if(COMMAND set_package_properties)
     set_package_properties(TinyXML PROPERTIES PURPOSE "Used by YARP")
 endif()
 
-#find_or_build_package(GooCanvas QUIET)
+# On Linux and OS X, compile YARP depending only on GSL (no ace)
+if(MSVC)
+    set(IDYNTREE_SUPERBUILD_SKIP_ACE TRUE)
+else()
+    set(IDYNTREE_SUPERBUILD_SKIP_ACE FALSE)
+endif()
 
 ycm_ep_helper(YARP TYPE GIT
                    STYLE GITHUB
@@ -34,32 +39,32 @@ ycm_ep_helper(YARP TYPE GIT
                    TAG master
                    COMPONENT external
                    DEPENDS TinyXML
-                   CMAKE_CACHE_ARGS -DCREATE_IDLS:BOOL=ON
-                                    -DCREATE_GUIS:BOOL=ON
-                                    -DCREATE_SHARED_LIBRARY:BOOL=ON
-                                    -DYARP_USE_SYSTEM_SQLITE:BOOL=ON
-                                    -DCREATE_LIB_MATH:BOOL=ON
-                                    -DYARP_USE_ATLAS:BOOL=OFF
-                                    -DDOX_GENERATE_XML:BOOL=OFF
-                                    -DCREATE_OPTIONAL_CARRIERS:BOOL=ON
-                                    -DENABLE_yarpcar_bayer_carrier:BOOL=ON
-                                    -DUSE_LIBDC1394:BOOL=OFF
-                                    -DENABLE_yarpcar_tcpros_carrier:BOOL=ON
-                                    -DENABLE_yarpcar_xmlrpc_carrier:BOOL=ON
-                                    -DENABLE_yarpcar_priority_carrier:BOOL=ON
-                                    -DENABLE_yarpcar_bayer_carrier:BOOL=ON
-                                    -DENABLE_yarpidl_thrift:BOOL=ON
-                                    -DCREATE_DEVICE_LIBRARY_MODULES:BOOL=ON
-                                    -DENABLE_yarpcar_human_carrier:BOOL=ON
-                                    -DENABLE_yarpcar_mjpeg_carrier:BOOL=OFF
-                                    -DENABLE_yarpcar_rossrv_carrier:BOOL=ON
-                                    -DENABLE_yarpmod_fakebot:BOOL=ON
-                                    -DENABLE_yarpmod_opencv_grabber:BOOL=OFF
-                                    -DYARP_CLEAN_API:BOOL=ON
-                                    -DYARP_COMPILE_TESTS:BOOL=OFF
-                                    -DCREATE_GYARPBUILDER:BOOL=OFF
-                                    -DYARP_COMPILE_EXPERIMENTAL_WRAPPERS:BOOL=ON
-                                    -DYARP_DOXYGEN_XML:BOOL=OFF
-                                    -DYARP_DOXYGEN_TAGFILE:BOOL=OFF
-                                    -DYARP_COMPILE_BINDINGS:BOOL=OFF
-                                    -DCREATE_PYTHON:BOOL=OFF)
+                   CMAKE_ARGS -DSKIP_ACE:BOOL=${IDYNTREE_SUPERBUILD_SKIP_ACE}
+                              -DCREATE_IDLS:BOOL=OFF
+                              -DCREATE_GUIS:BOOL=OFF
+                              -DCREATE_SHARED_LIBRARY:BOOL=ON
+                              -DYARP_USE_SYSTEM_SQLITE:BOOL=ON
+                              -DCREATE_LIB_MATH:BOOL=ON
+                              -DYARP_USE_ATLAS:BOOL=OFF
+                              -DDOX_GENERATE_XML:BOOL=OFF
+                              -DCREATE_OPTIONAL_CARRIERS:BOOL=OFF
+                              -DENABLE_yarpcar_bayer_carrier:BOOL=OFF
+                              -DUSE_LIBDC1394:BOOL=OFF
+                              -DENABLE_yarpcar_tcpros_carrier:BOOL=OFF
+                              -DENABLE_yarpcar_xmlrpc_carrier:BOOL=OFF
+                              -DENABLE_yarpcar_priority_carrier:BOOL=OFF
+                              -DENABLE_yarpcar_bayer_carrier:BOOL=OFF
+                              -DENABLE_yarpidl_thrift:BOOL=OFF
+                              -DCREATE_DEVICE_LIBRARY_MODULES:BOOL=OFF
+                              -DENABLE_yarpcar_human_carrier:BOOL=OFF
+                              -DENABLE_yarpcar_mjpeg_carrier:BOOL=OFF
+                              -DENABLE_yarpcar_rossrv_carrier:BOOL=OFF
+                              -DENABLE_yarpmod_fakebot:BOOL=OFF
+                              -DENABLE_yarpmod_opencv_grabber:BOOL=OFF
+                              -DYARP_CLEAN_API:BOOL=ON
+                              -DYARP_COMPILE_TESTS:BOOL=OFF
+                              -DCREATE_YARPBUILDER:BOOL=OFF
+                              -DYARP_DOXYGEN_XML:BOOL=OFF
+                              -DYARP_DOXYGEN_TAGFILE:BOOL=OFF
+                              -DYARP_COMPILE_BINDINGS:BOOL=OFF
+                              -DCREATE_PYTHON:BOOL=OFF)
