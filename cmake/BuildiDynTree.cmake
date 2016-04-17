@@ -47,7 +47,7 @@ ycm_ep_helper(iDynTree TYPE GIT
                        CMAKE_ARGS -DIDYNTREE_USES_MATLAB:BOOL=${IDYNTREE_SUPERBUILD_USES_MATLAB}
                                   -DIDYNTREE_USES_PYTHON:BOOL=${IDYNTREE_SUPERBUILD_USES_PYTHON}
                                   -DIDYNTREE_USES_LUA:BOOL=${IDYNTREE_SUPERBUILD_USES_LUA}
-                                  -DIDYNTREE_USES_KDL:BOOL=${IDYNTREE_SUPERBUILD_USES_MATLAB}
+                                  -DIDYNTREE_USES_KDL:BOOL=${IDYNTREE_SUPERBUILD_USES_KDL}
                                   -DIDYNTREE_USES_YARP:BOOL=${IDYNTREE_SUPERBUILD_USES_YARP}
                                   -DIDYNTREE_USES_ICUB_MAIN:BOOL=${IDYNTREE_SUPERBUILD_USES_ICUB_MAIN}
                        DEPENDS ${iDynTreeDependsList})
