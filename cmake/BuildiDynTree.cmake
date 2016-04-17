@@ -9,7 +9,7 @@ if(IDYNTREE_SUPERBUILD_USES_YARP)
     list(APPEND iDynTreeDependsList YARP)
 endif()
 
-if(IDYNTREE_SUPERBUILD_USES_ICUB)
+if(IDYNTREE_SUPERBUILD_USES_ICUB_MAIN)
     find_or_build_package(ICUB QUIET)
     list(APPEND iDynTreeDependsList ICUB)
 endif()
