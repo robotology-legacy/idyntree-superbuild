@@ -17,11 +17,12 @@ include(FeatureSummary)
 
 set(YCM_USE_CMAKE_PROPOSED TRUE CACHE BOOL "Use files including unmerged cmake patches")
 
-option(IDYNTREE_USES_MATLAB "Enable compilation of software that depends on Matlab" FALSE)
-option(IDYNTREE_USES_LUA    "Enable compilation of software that depends on Lua"    FALSE)
-option(IDYNTREE_USES_PYTHON "Enable compilation of software that depends on Python" FALSE)
-option(IDYNTREE_USES_OCTAVE "Enable compilation of software that depends on Octave" FALSE)
-option(IDYNTREE_USES_KDL    "Enable compilation of software that depends on KDL"    TRUE)
+option(IDYNTREE_USES_MATLAB    "Enable compilation of software that depends on Matlab" FALSE)
+option(IDYNTREE_USES_LUA       "Enable compilation of software that depends on Lua"    FALSE)
+option(IDYNTREE_USES_PYTHON    "Enable compilation of software that depends on Python" FALSE)
+option(IDYNTREE_USES_OCTAVE    "Enable compilation of software that depends on Octave" FALSE)
+option(IDYNTREE_USES_KDL       "Enable compilation of software that depends on KDL"    TRUE)
+option(IDYNTREE_USES_ICUB_MAIN "Enable compilation of software that depends on icub-main" FALSE)
 
 # Optionally load a file named ProjectsTags
 # for overwriting the desired branch/tag/commit
@@ -47,7 +48,10 @@ else()
 endif()
 
 find_or_build_package(YARP)
-find_or_build_package(ICUB)
+if(${IDYNTREE_USES_ICUB_MAIN})
+    find_or_build_package(ICUB)
+endif()
+
 find_or_build_package(iDynTree)
 
 

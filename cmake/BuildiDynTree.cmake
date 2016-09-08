@@ -13,7 +13,11 @@ find_or_build_package(TinyXML QUIET)
 set(iDynTree_DEPENDS)
 
 list(APPEND iDynTree_DEPENDS YARP)
-list(APPEND iDynTree_DEPENDS ICUB)
+
+if(${IDYNTREE_USES_ICUB_MAIN})
+    list(APPEND iDynTree_DEPENDS ICUB)
+endif()
+
 list(APPEND iDynTree_DEPENDS TinyXML)
 
 if(${IDYNTREE_USES_KDL})
@@ -46,4 +50,5 @@ ycm_ep_helper(iDynTree TYPE GIT
                          -DIDYNTREE_USES_OCTAVE:BOOL=${IDYNTREE_USES_OCTAVE}
                          -DIDYNTREE_USES_MATLAB:BOOL=${IDYNTREE_USES_MATLAB}
                          -DIDYNTREE_USES_KDL=${IDYNTREE_USES_KDL}
+                         -DIDYNTREE_USES_ICUB_MAIN=${IDYNTREE_USES_ICUB_MAIN}
               DEPENDS ${iDynTree_DEPENDS})

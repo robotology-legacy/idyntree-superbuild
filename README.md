@@ -41,9 +41,13 @@ If you want to install Eigen manually, or you have already installed Eigen pleas
 You can install Eigen from source code available from the [Eigen official website](http://eigen.tuxfamily.org).
 You can simply extract the Eigen source code in a directory, and then define the `EIGEN3_ROOT` environment variable to the path of the directory that contains the file `signature_of_eigen3_matrix_library` (it should be the first directory contained in the compressed file).
 
-####YARP & iCub
-For installing the latest version of YARP and ICUB software, please refer to [the official iCub documentation](http://wiki.icub.org/wiki/ICub_Software_Installation). If you do not plan to modify YARP
-or ICUB, it should be sufficient to install the binaries of YARP and ICUB. 
+####YARP
+For installing the latest version of YARP software, please refer to [YARP official documentation](http://www.yarp.it/install_yarp_windows.html). If you do not plan to modify YARP, it should be sufficient to install the binaries of YARP.
+
+####ICUB
+By default, the ICUB dependency of `iDynTree` has been disabled. To enable it back, set the `IDYNTREE_USES_ICUB_MAIN` CMake option and install ICUB following the instructions available
+in [the official iCub documentation](http://wiki.icub.org/wiki/ICub_Software_Installation). If you do not plan to modify ICUB, it should be sufficient to install the binaries of ICUB.
+
 
 ###Superbuild
 If you didn't already configured your git, you have to set your name and email to sign your commits:
