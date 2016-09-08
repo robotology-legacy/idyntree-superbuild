@@ -16,8 +16,7 @@ list(APPEND iDynTree_DEPENDS YARP)
 list(APPEND iDynTree_DEPENDS ICUB)
 list(APPEND iDynTree_DEPENDS TinyXML)
 
-
-if(${CODYCO_USES_KDL})
+if(${IDYNTREE_USES_KDL})
     # orocos_kdl and package kdl_codyco use export(PACKAGE <pkg>) that
     # installs some files in ~/.cmake/packages/<pkg> that are used by cmake
     # to locate the build directory for some packages.
