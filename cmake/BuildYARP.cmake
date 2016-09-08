@@ -26,8 +26,6 @@ if(COMMAND set_package_properties)
     set_package_properties(TinyXML PROPERTIES PURPOSE "Used by YARP")
 endif()
 
-#find_or_build_package(GooCanvas QUIET)
-
 ycm_ep_helper(YARP TYPE GIT
                    STYLE GITHUB
                    REPOSITORY robotology/yarp.git
@@ -43,7 +41,6 @@ ycm_ep_helper(YARP TYPE GIT
                                     -DDOX_GENERATE_XML:BOOL=OFF
                                     -DCREATE_OPTIONAL_CARRIERS:BOOL=ON
                                     -DENABLE_yarpcar_bayer_carrier:BOOL=ON
-                                    -DUSE_LIBDC1394:BOOL=OFF
                                     -DENABLE_yarpcar_tcpros_carrier:BOOL=ON
                                     -DENABLE_yarpcar_xmlrpc_carrier:BOOL=ON
                                     -DENABLE_yarpcar_priority_carrier:BOOL=ON
@@ -55,9 +52,7 @@ ycm_ep_helper(YARP TYPE GIT
                                     -DENABLE_yarpcar_rossrv_carrier:BOOL=ON
                                     -DENABLE_yarpmod_fakebot:BOOL=ON
                                     -DENABLE_yarpmod_opencv_grabber:BOOL=OFF
-                                    -DYARP_CLEAN_API:BOOL=ON
                                     -DYARP_COMPILE_TESTS:BOOL=OFF
-                                    -DCREATE_GYARPBUILDER:BOOL=OFF
                                     -DYARP_COMPILE_EXPERIMENTAL_WRAPPERS:BOOL=ON
                                     -DYARP_DOXYGEN_XML:BOOL=OFF
                                     -DYARP_DOXYGEN_TAGFILE:BOOL=OFF

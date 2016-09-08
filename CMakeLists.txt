@@ -17,8 +17,11 @@ include(FeatureSummary)
 
 set(YCM_USE_CMAKE_PROPOSED TRUE CACHE BOOL "Use files including unmerged cmake patches")
 
-#Compilation options
-option(USE_SYSTEM_TINYXML "Use system TinyXML instead of superbuild one" FALSE)
+option(IDYNTREE_USES_MATLAB "Enable compilation of software that depends on Matlab" FALSE)
+option(IDYNTREE_USES_LUA    "Enable compilation of software that depends on Lua"    FALSE)
+option(IDYNTREE_USES_PYTHON "Enable compilation of software that depends on Python" FALSE)
+option(IDYNTREE_USES_OCTAVE "Enable compilation of software that depends on Octave" FALSE)
+option(IDYNTREE_USES_KDL    "Enable compilation of software that depends on KDL"    TRUE)
 
 # Optionally load a file named ProjectsTags
 # for overwriting the desired branch/tag/commit
@@ -32,23 +35,13 @@ if(NOT CMAKE_VERSION VERSION_LESS 3.0)
 endif()
 
 # Bootstrap YCM
-set(YCM_TAG aae056b0f51d106fe746b964966ca816faa925ab)
 include(YCMBootstrap)
 
 include(FindOrBuildPackage)
 include(YCMEPHelper)
 
-# Require Boost here to simplify debug for now
-# (BuildBoost.cmake requires CMake 3.0, but the 
-#  theory is that you need it only on Windows)
-# Note that while is possible to specify header-only
-# Boost libraries as components in BuildBoost.cmake,
-# this is not possible in FindBoost.cmake . For this 
-# reason we first search for Boost and only if we can't
-# find it in the system we call find_or_build_package
-# with the required components.
 if(MSVC) 
-	find_or_build_package(Eigen3)
+    find_or_build_package(Eigen3)
 else()
     find_package(Eigen3 3.2 REQUIRED)
 endif()
