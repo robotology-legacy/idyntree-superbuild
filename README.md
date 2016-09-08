@@ -24,15 +24,6 @@ If you have installed Chocolatey, you can install Git with the following command
 choco install git
 ~~~
 
-####Mercurial
-The [Eigen matrix library](http://eigen.tuxfamily.org), used in iDynTree for low-level linear algebra computations, is hosted in Mercurial repositories, so you will need Mercurial to automatically download them. 
-You can download the Mercurial installer at http://mercurial.selenic.com/wiki/Download . 
-##### Chocolatey 
-If you have installed Chocolatey, you can install Monotone with the following command:
-~~~
-choco install hg
-~~~
-
 ####CMake
 To install CMake you can use the official installer available at http://www.cmake.org/cmake/resources/software.html .
 It is recommended to install the latest version of CMake. 
