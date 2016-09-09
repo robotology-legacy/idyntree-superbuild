@@ -3,8 +3,6 @@ include(YCMEPHelper)
 include(FindOrBuildPackage)
 
 find_or_build_package(YARP QUIET)
-find_or_build_package(ICUB QUIET)
-
 find_or_build_package(TinyXML QUIET)
 
 # iDynTree is being migrated to be indipendent from urdfdom/orocos_kdl and thus boost
@@ -15,6 +13,7 @@ set(iDynTree_DEPENDS)
 list(APPEND iDynTree_DEPENDS YARP)
 
 if(${IDYNTREE_USES_ICUB_MAIN})
+    find_or_build_package(ICUB QUIET)
     list(APPEND iDynTree_DEPENDS ICUB)
 endif()
 
