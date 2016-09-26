@@ -1,5 +1,15 @@
-# iDynTree-superbuild [![Build Status](https://travis-ci.org/robotology-playground/iDynTree-superbuild.svg?branch=master)](https://travis-ci.org/robotology-playground/iDynTree-superbuild)
+# iDynTree-superbuild [![Build Status](https://travis-ci.org/robotology/idyntree-superbuild.svg?branch=master)](https://travis-ci.org/robotology/idyntree-superbuild)
 Superbuild helper repository for installing dependencies for all the components of the iDynTree library. 
+
+
+Table of Contents
+=================
+  * [Installation](#installation)
+    * [Linux](#linux)
+    * [macOS](#macOS)
+    * [Windows](#windows)
+  * [Update](#update)
+
 
 Installation
 ============
@@ -144,3 +154,27 @@ source:
 #### YARP and iCub software
 For installing the latest version of YARP and ICUB software, please refer to [the official iCub documentation](http://wiki.icub.org/wiki/Linux:Installation_from_sources). Please note that at the moment 
 the codyco-superbuild only supports YARP and ICUB installed from sources.
+
+Update
+======
+For updating the codyco-superbuild repository it is possible to just fetch the last changes using the usual
+git command:
+~~~
+git pull
+~~~
+However, for running the equivalent of `git pull` on all the repositories managed by
+the codyco-superbuild, you have to execute in your build system the appropriate target.
+To do this, make sure to be in the `build` directory of the `codyco-superbuild` and execute:
+~~~
+make update-all
+~~~
+using make on Linux or macOS or
+~~~
+cmake --build . --target UPDATE_ALL
+~~~
+using Visual Studio on Windows or 
+~~~
+cmake --build . --target ALL_UPDATE
+~~~
+using Xcode on macOS.
+
