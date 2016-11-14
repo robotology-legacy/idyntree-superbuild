@@ -30,6 +30,9 @@ option(IDYNTREE_USES_ICUB_MAIN "Enable compilation of software that depends on i
 # Useful for having superbuild "branches"
 include(ProjectsTags OPTIONAL)
 
+# Workaround for https://github.com/robotology/ycm/issues/101
+set(YCM_TAG 76cf228572e90cbb23ffc91efb57a607c8d008c0)
+
 #Set CMake policies
 if(NOT CMAKE_VERSION VERSION_LESS 3.0)
     cmake_policy(SET CMP0045 OLD)
