@@ -32,8 +32,8 @@ ycm_ep_helper(YARP TYPE GIT
                    TAG master
                    COMPONENT external
                    DEPENDS TinyXML
-                   CMAKE_CACHE_ARGS -DCREATE_IDLS:BOOL=ON
-                                    -DCREATE_GUIS:BOOL=ON
+                   CMAKE_CACHE_ARGS -DCREATE_IDLS:BOOL=OFF
+                                    -DCREATE_GUIS:BOOL=OFF
                                     -DCREATE_SHARED_LIBRARY:BOOL=ON
                                     -DYARP_USE_SYSTEM_SQLITE:BOOL=ON
                                     -DCREATE_LIB_MATH:BOOL=ON
