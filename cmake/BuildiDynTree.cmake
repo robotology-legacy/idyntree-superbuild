@@ -50,4 +50,5 @@ ycm_ep_helper(iDynTree TYPE GIT
                          -DIDYNTREE_USES_MATLAB:BOOL=${IDYNTREE_USES_MATLAB}
                          -DIDYNTREE_USES_KDL=${IDYNTREE_USES_KDL}
                          -DIDYNTREE_USES_ICUB_MAIN=${IDYNTREE_USES_ICUB_MAIN}
+                         -DIDYNTREE_USES_IRRLICHT=${IDYNTREE_USES_IRRLICHT}
               DEPENDS ${iDynTree_DEPENDS})
