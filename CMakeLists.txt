@@ -23,6 +23,7 @@ option(IDYNTREE_USES_PYTHON    "Enable compilation of software that depends on P
 option(IDYNTREE_USES_OCTAVE    "Enable compilation of software that depends on Octave" FALSE)
 option(IDYNTREE_USES_KDL       "Enable compilation of software that depends on KDL"    TRUE)
 option(IDYNTREE_USES_ICUB_MAIN "Enable compilation of software that depends on icub-main" FALSE)
+option(IDYNTREE_USES_IRRLICHT  "Enable compilation of software that depends on irrlicht" FALSE)
 
 # Optionally load a file named ProjectsTags
 # for overwriting the desired branch/tag/commit
