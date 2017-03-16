@@ -6,7 +6,7 @@ Table of Contents
 =================
   * [Installation](#installation)
     * [Linux](#linux)
-    * [macOS](#macOS)
+    * [macOS](#macos)
     * [Windows](#windows)
   * [Update](#update)
 
@@ -16,16 +16,16 @@ Installation
 
 We provide different instructions on how to install iDynTree throught the iDynTree-superbuild, depending on your operating system:
 * [**Windows**](#windows): use the superbuild with Microsoft Visual Studio
-* [**OS X**](#os-x): use the superbuild with Xcode or GNU make
+* [**macOS**](#macos): use the superbuild with Xcode or GNU make
 * [**Linux**](#linux): use the superbuild with make 
 
-##Windows
+## Windows
 
-###System Dependencies 
+### System Dependencies 
 iDynTree and its dependencies are developed using the C/C++ language. For this reason, you should have Visual Studio installed on your computer to build it. You will also need some additional software, as listed afterwards. 
 Some of this software can be easily installed using [Chocolatey](https://chocolatey.org), a tool to simplify software installation on Windows. 
 
-####Git 
+#### Git 
 Most of the CoDyCo software is hosted on Git repositories, so you will need Git to download them. 
 You can download the Git installer at http://msysgit.github.io/ . 
 ##### Chocolatey 
@@ -43,23 +43,23 @@ If you have installed Chocolatey, you can install CMake with the following comma
 choco install cmake 
 ~~~
 
-####Eigen
+#### Eigen
 Eigen can be automatically installed with the codyco-superbuild, so you don't have to install it manually. 
 
 If you want to install Eigen manually, or you have already installed Eigen please check the following section.
-#####Eigen Manual installation
+##### Eigen Manual installation
 You can install Eigen from source code available from the [Eigen official website](http://eigen.tuxfamily.org).
 You can simply extract the Eigen source code in a directory, and then define the `EIGEN3_ROOT` environment variable to the path of the directory that contains the file `signature_of_eigen3_matrix_library` (it should be the first directory contained in the compressed file).
 
-####YARP
+#### YARP
 For installing the latest version of YARP software, please refer to [YARP official documentation](http://www.yarp.it/install_yarp_windows.html). If you do not plan to modify YARP, it should be sufficient to install the binaries of YARP.
 
-####ICUB
+#### ICUB
 By default, the ICUB dependency of `iDynTree` has been disabled. To enable it back, set the `IDYNTREE_USES_ICUB_MAIN` CMake option and install ICUB following the instructions available
 in [the official iCub documentation](http://wiki.icub.org/wiki/ICub_Software_Installation). If you do not plan to modify ICUB, it should be sufficient to install the binaries of ICUB.
 
 
-###Superbuild
+### Superbuild
 If you didn't already configured your git, you have to set your name and email to sign your commits:
 ```
 git config --global user.name FirstName LastName
@@ -72,7 +72,7 @@ If you prefer to work from the command line, you can also compile the `ALL_BUILD
 cmake --build . 
 ~~~
 
-###Configure your environment
+### Configure your environment
 Currently the YCM superbuild does not support building a global install target, so all binaries are installed in `codyco-superbuild/build/install/bin` and all libraries in `codyco-superbuild/build/install/lib`.
 
 To use this binaries and libraries, you should update the necessary environment variables.
@@ -83,9 +83,9 @@ To make the tools installed by iDynTree available from your command line, append
 
 To make the iDynTree library available by other project to use, append the `$IDYNTREE_SUPERBUILD_ROOT/build` to your  `CMAKE_PREFIX_PATH` enviromental variable (or create it if it is not set). 
 
-##OS X
+## macOS
 
-###System Dependencies 
+### System Dependencies 
 To install Eigen and CMake, it is possible to use [Homebrew](http://brew.sh/):
 ```
 brew install eigen cmake boost tinyxml
@@ -93,7 +93,7 @@ brew install eigen cmake boost tinyxml
 
 For installing the latest version of YARP and ICUB software, please refer to [the official iCub documentation](http://wiki.icub.org/wiki/ICub_Software_Installation).
 
-###Superbuild
+### Superbuild
 If you didn't already configured your git, you have to set your name and email to sign your commits:
 ```
 git config --global user.name FirstName LastName
@@ -117,7 +117,7 @@ cmake ../ -G Xcode
 xcodebuild -configuration Release
 ```
 
-###Configure your environment
+### Configure your environment
 After building teh superbuild, all binaries are installed in `iDynTree-superbuild/build/install/bin` and all libraries in `iDynTree-superbuild/build/install/lib`.
 
 To use this binaries you should update the `PATH` environment variables.
@@ -139,8 +139,8 @@ user@host:~$ source ~/.bash_profile
 ```
 or simply open a new terminal.
 
-##Linux 
-###System Dependencies 
+## Linux 
+### System Dependencies 
 On Debian based systems (as Ubuntu) you can install CMake and Eigen (and other dependencies necessary for the codyco-superbuild) using `apt-get`:
 ```
 sudo apt-get install libeigen3-dev cmake cmake-curses-gui libboost-system-dev libboost-thread-dev libtinyxml-dev libace-dev libgtkmm-2.4-dev libglademm-2.4-dev libgsl0-dev libcv-dev libhighgui-dev libcvaux-dev libode-dev liblua5.1-dev lua5.1 swig
