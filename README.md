@@ -34,7 +34,7 @@ If you have installed Chocolatey, you can install Git with the following command
 choco install git
 ~~~
 
-####CMake
+#### CMake
 To install CMake you can use the official installer available at http://www.cmake.org/cmake/resources/software.html .
 It is recommended to install the latest version of CMake. 
 ##### Chocolatey 
