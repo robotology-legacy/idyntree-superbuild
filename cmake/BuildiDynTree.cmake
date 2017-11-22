@@ -2,42 +2,23 @@
 include(YCMEPHelper)
 include(FindOrBuildPackage)
 
-find_or_build_package(YARP QUIET)
-find_or_build_package(TinyXML QUIET)
-
-# iDynTree is being migrated to be indipendent from urdfdom/orocos_kdl and thus boost
-# Consequently, depending on the CODYCO_USES_KDL option it compile the part that depends
-# on Boost (kdl, model_io, etc) or not
 set(iDynTree_DEPENDS)
 
-list(APPEND iDynTree_DEPENDS YARP)
-
+if(${IDYNTREE_USES_YARP})
+    find_or_build_package(YARP QUIET)
+    list(APPEND iDynTree_DEPENDS YARP)
+endif()
 if(${IDYNTREE_USES_ICUB_MAIN})
     find_or_build_package(ICUB QUIET)
     list(APPEND iDynTree_DEPENDS ICUB)
 endif()
 
-list(APPEND iDynTree_DEPENDS TinyXML)
-
-if(${IDYNTREE_USES_KDL})
-    # orocos_kdl and package kdl_codyco use export(PACKAGE <pkg>) that
-    # installs some files in ~/.cmake/packages/<pkg> that are used by cmake
-    # to locate the build directory for some packages.
-    # This messes up with the superbuild, because CMake will find the build
-    # directory, and therefore will not rebuild the package.
-    # Therefore we disable the package registry using
-    # NO_CMAKE_PACKAGE_REGISTRY
-    find_or_build_package(orocos_kdl QUIET NO_CMAKE_PACKAGE_REGISTRY)
-    list(APPEND iDynTree_DEPENDS orocos_kdl)
-
-    if( NOT MSVC )
-        find_or_build_package(urdfdom_headers QUIET)
-        find_or_build_package(urdfdom QUIET)
-        list(APPEND iDynTree_DEPENDS urdfdom_headers)
-        list(APPEND iDynTree_DEPENDS urdfdom)
-    endif()
+if(MSVC) 
+    find_or_build_package(Eigen3)
+    find_or_build_package(TinyXML)
+    list(APPEND iDynTree_DEPENDS Eigen3)
+    list(APPEND iDynTree_DEPENDS TinyXML)
 endif()
-
 
 ycm_ep_helper(iDynTree TYPE GIT
               STYLE GITHUB
@@ -48,7 +29,8 @@ ycm_ep_helper(iDynTree TYPE GIT
                          -DIDYNTREE_USES_LUA:BOOL=${IDYNTREE_USES_LUA}
                          -DIDYNTREE_USES_OCTAVE:BOOL=${IDYNTREE_USES_OCTAVE}
                          -DIDYNTREE_USES_MATLAB:BOOL=${IDYNTREE_USES_MATLAB}
-                         -DIDYNTREE_USES_KDL=${IDYNTREE_USES_KDL}
-                         -DIDYNTREE_USES_ICUB_MAIN=${IDYNTREE_USES_ICUB_MAIN}
-                         -DIDYNTREE_USES_IRRLICHT=${IDYNTREE_USES_IRRLICHT}
+                         -DIDYNTREE_USES_KDL:BOOL=OFF
+                         -DIDYNTREE_USES_YARP:BOOL=${IDYNTREE_USES_YARP}
+                         -DIDYNTREE_USES_ICUB_MAIN:BOOL=${IDYNTREE_USES_ICUB_MAIN}
+                         -DIDYNTREE_USES_IRRLICHT:BOOL=${IDYNTREE_USES_IRRLICHT}
               DEPENDS ${iDynTree_DEPENDS})

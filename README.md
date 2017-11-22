@@ -101,7 +101,7 @@ git config --global user.email user@email.domain
 ```
 Finally it is possible to install iDynTree and its dependencies using the superbuild:
 ```bash
-git clone https://github.com/robotology-playground/iDynTree-superbuild.git
+git clone https://github.com/robotology/idyntree-superbuild.git
 cd iDynTree-superbuild
 mkdir build
 cd build

@@ -21,7 +21,7 @@ option(IDYNTREE_USES_MATLAB    "Enable compilation of software that depends on M
 option(IDYNTREE_USES_LUA       "Enable compilation of software that depends on Lua"    FALSE)
 option(IDYNTREE_USES_PYTHON    "Enable compilation of software that depends on Python" FALSE)
 option(IDYNTREE_USES_OCTAVE    "Enable compilation of software that depends on Octave" FALSE)
-option(IDYNTREE_USES_KDL       "Enable compilation of software that depends on KDL"    TRUE)
+option(IDYNTREE_USES_YARP      "Enable compilation of software that depends on YARP"    FALSE)
 option(IDYNTREE_USES_ICUB_MAIN "Enable compilation of software that depends on icub-main" FALSE)
 option(IDYNTREE_USES_IRRLICHT  "Enable compilation of software that depends on irrlicht" FALSE)
 
@@ -37,8 +37,9 @@ if(NOT CMAKE_VERSION VERSION_LESS 3.0)
 endif()
 
 # Bootstrap YCM
-# Version working after https://github.com/robotology/ycm/issues/108
-set(YCM_TAG 9ffc3a48d99dd1bed603e796ec61638463c4790d)
+set(YCM_TAG abb0a980c7079a6bdf5155bb53795b53c38b424d)
+# Workaround disabling hash warning until we fix https://github.com/robotology/codyco-superbuild/issues/162
+set(YCM_SKIP_HASH_CHECK TRUE)
 include(YCMBootstrap)
 
 include(FindOrBuildPackage)
@@ -46,11 +47,14 @@ include(YCMEPHelper)
 
 if(MSVC) 
     find_or_build_package(Eigen3)
+    find_or_build_package(TinyXML)
 else()
     find_package(Eigen3 3.2 REQUIRED)
 endif()
 
-find_or_build_package(YARP)
+if(${IDYNTREE_USES_YARP})
+    find_or_build_package(YARP)
+endif()
 if(${IDYNTREE_USES_ICUB_MAIN})
     find_or_build_package(ICUB)
 endif()
