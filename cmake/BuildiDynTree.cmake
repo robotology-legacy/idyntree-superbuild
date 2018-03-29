@@ -29,7 +29,7 @@ ycm_ep_helper(iDynTree TYPE GIT
                          -DIDYNTREE_USES_LUA:BOOL=${IDYNTREE_USES_LUA}
                          -DIDYNTREE_USES_OCTAVE:BOOL=${IDYNTREE_USES_OCTAVE}
                          -DIDYNTREE_USES_MATLAB:BOOL=${IDYNTREE_USES_MATLAB}
-                         -DIDYNTREE_USES_KDL:BOOL=OFF
+                         -DIDYNTREE_USES_KDL:BOOL=${IDYNTREE_USES_KDL}
                          -DIDYNTREE_USES_YARP:BOOL=${IDYNTREE_USES_YARP}
                          -DIDYNTREE_USES_ICUB_MAIN:BOOL=${IDYNTREE_USES_ICUB_MAIN}
                          -DIDYNTREE_USES_IRRLICHT:BOOL=${IDYNTREE_USES_IRRLICHT}

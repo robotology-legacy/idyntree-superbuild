@@ -24,6 +24,8 @@ option(IDYNTREE_USES_OCTAVE    "Enable compilation of software that depends on O
 option(IDYNTREE_USES_YARP      "Enable compilation of software that depends on YARP"    FALSE)
 option(IDYNTREE_USES_ICUB_MAIN "Enable compilation of software that depends on icub-main" FALSE)
 option(IDYNTREE_USES_IRRLICHT  "Enable compilation of software that depends on irrlicht" FALSE)
+option(IDYNTREE_USES_KDL       "Enable compilation of software that depends on KDL" FALSE)
+
 
 # Optionally load a file named ProjectsTags
 # for overwriting the desired branch/tag/commit
