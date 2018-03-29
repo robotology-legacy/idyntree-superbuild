@@ -118,13 +118,13 @@ xcodebuild -configuration Release
 ```
 
 ### Configure your environment
-After building teh superbuild, all binaries are installed in `iDynTree-superbuild/build/install/bin` and all libraries in `iDynTree-superbuild/build/install/lib`.
+After building the superbuild, all binaries are installed in `idyntree-superbuild/build/install/bin` and all libraries in `idyntree-superbuild/build/install/lib`.
 
 To use this binaries you should update the `PATH` environment variables.
 
 An easy way is to add these lines to the `.bashrc` or `.bash_profile` file in your home directory:
 ```bash
-IDYNTREE_SUPERBUILD_ROOT=/directory/where/you/downloaded/iDynTree-superbuild
+IDYNTREE_SUPERBUILD_ROOT=/directory/where/you/downloaded/idyntree-superbuild
 export PATH=$PATH:$IDYNTREE_SUPERBUILD_ROOT/build/install/bin
 export YARP_DATA_DIRS=$YARP_DATA_DIRS:$IDYNTREE_SUPERBUILD_ROOT/build/install/share/codyco
 ```
